@@ -1,0 +1,7 @@
+
+
+/* este exemplo trabalha com o back-end,
+utilizando o express criando um server,
+localhost e o fron-tend trabalha com o 
+node-server criando um server,localhost */
+
