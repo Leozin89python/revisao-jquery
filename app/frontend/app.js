@@ -27,7 +27,7 @@ $('#thirdquery').click(function(){
 
 /** ajax request */
 
-var url = 'http://192.168.100.5:3000/server'
+var url = 'http://localhost:3000/server'
 
 fetch(url, { mode: 'no-cors' }).then(res => res.json())
           .then(response =>{

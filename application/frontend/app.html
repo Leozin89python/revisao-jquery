@@ -121,6 +121,11 @@
 					position:relative;
 				}
 			}
+			@media(max-width:800px){
+					body main :first-child{
+					display: none;
+				}
+			}
 		</style>
     </head>
     <body>
@@ -152,7 +157,7 @@
         <footer>
             <p>&reg; Application and all rights reserved.</p>
         </footer>
-
+		
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
 				var animationQuery = setInterval(()=>{
@@ -184,13 +189,14 @@
 
 					/** ajax request */
 
-					var url = 'http://192.168.100.5:3000/server'
+					var url = 'http://localhost:3000/server'
 
-					fetch(url, { mode: 'no-cors' }).then(res => res.json())
+					fetch(url, {mode: 'no-cors'}).then(res => res.json())
 							  .then(response =>{
 								  response.map(contents =>{
 									console.log('nivel:' + contents.nivel + ',' + 'tecnologia:' + contents.tecnologia)   
 								  })
+								  console.log(response)
 							  })
 							  .catch((err)=>{
 								 let main = document.getElementById('main')
@@ -203,6 +209,6 @@
 								 main.append(request)
 								 console.log(err)
 								 })
-		</script>
+		</script> 
     </body>
 </html>

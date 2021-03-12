@@ -1,11 +1,20 @@
 /**node server */
 const http = require('http')
+const file = require('fs').promises
 const port = 3001
-const host = 'localhost'
+const host = '192.168.100.5'
 
 const requestListener = async (req, res)=>{
-    res.writeHead(200)
-    res.end('server ok')
+    file.readFile(__dirname + '/app.html')
+        .then(page =>{
+            res.setHeader('Content_Type','text/html')
+            res.writeHead(200)
+            res.end(page)
+        }).catch(err =>{
+            res.writeHead(200)
+            res.end(err)
+            return
+        })
 }
 const app = http.createServer(requestListener)
 app.listen(port,host,()=>{

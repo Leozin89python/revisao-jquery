@@ -117,3 +117,8 @@ nav h1{
         position:relative;
     }
 }
+	@media(max-width:800px){
+		body main :first-child{
+		display: none;
+		}
+	}
