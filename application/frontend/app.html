@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <style>
+			html,body{
+				margin: 0;
+				height: 100%;
+			}
+			header,main,nav,footer{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				overflow: hidden;
+			}
+			header{
+				grid-area: header;
+				border: solid rgba(0,0,0,0.3) 1px;
+				background: linear-gradient(90deg, darkgreen 15%, green 40%,  red 45%);
+				color: white;
+			}
+			main{
+				grid-area:main;
+				border: solid rgba(0,0,0,0.3) 1px;
+
+				display: flex;
+				flex-direction: column;
+				overflow-y: scroll;
+			}
+			nav{
+				grid-area:nav;
+				border: solid rgba(0,0,0,0.3) 1px;
+				background: black;
+
+				color: whitesmoke;
+			}
+			footer{
+				grid-area:footer;
+				border: solid rgba(0,0,0,0.3) 1px;
+
+				background: linear-gradient(90deg, red 45%, darkgreen 15%, green 40%);
+				color: whitesmoke;
+
+				position: relative;
+			}
+			footer :first-child{
+				position: absolute;
+				bottom: 0;
+				margin-left: 55%;
+			}
+			body{                                         
+				display: grid;
+				grid-template-columns: 300px 1fr;
+				grid-template-rows: 200px 1fr  200px 100px;
+				grid-template-areas: 
+					'header  header'
+					'nav       main'
+					'nav       main'
+					'nav      footer'
+				;
+
+				position:relative;
+			}
+			body strong{
+				text-decoration: overline;
+			}
+			body span{
+				color: gold;
+			}
+			body u{
+				color: red;
+				text-shadow: 0px 1px 2px white;
+			}
+			body ::first-letter{
+				color: gold;
+				text-shadow: rgba(0,0,0,0.4) 0px 1px 2px;
+			}
+			body nav :first-child{
+				position: absolute;
+				top:200px;
+			}
+			body main :first-child{
+				position: absolute;
+				top:200px;
+				margin-right: 50%;
+
+				background: rgba(0,0,0,0.05);
+
+				padding: 10px;
+			}
+			nav h1{
+				margin-bottom: 10px;
+			}
+			#request{
+				background: darkred;
+				color: white;
+				padding: 10px;
+
+				font-weight: bolder;
+			}
+			#query,#secondquery,#thirdquery{
+				height: 100px;
+				width: 80%;
+				margin: 3px 0;
+			}
+			#thirdquery{
+				cursor: pointer;
+			}
+			@media(max-width:600px){
+				body{                                         
+					display: grid;
+					grid-template-columns: 200px 1fr;
+					grid-template-rows: 200px 1fr  200px 100px;
+					grid-template-areas: 
+						'header  header'
+						'nav       main'
+						'nav       main'
+						'nav      footer'
+					;
+				
+					position:relative;
+				}
+			}
+		</style>
+    </head>
+    <body>
+        <header>
+            <h1>Application&copy;</h1>
+            <p>
+                <strong>
+                    App frontend to understanding <span><u>j</u>query</span> and <span><u>l</u>ayout</span> pagination
+                </strong>
+            </p>
+        </header>
+        <nav>
+            <h1>Animation area</h1>
+            <img id="query" 
+                src="./assets/jq.jpg"
+            >
+            <img id="secondquery" 
+            src="./assets/jq.jpg"
+             >
+             <img id="thirdquery" 
+             src="./assets/jq.jpg"
+              >
+        </nav>
+        <main id="main">
+            <h1>Ajax content</h1>
+            <i id="request">
+            </i>
+        </main>
+        <footer>
+            <p>&reg; Application and all rights reserved.</p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+				var animationQuery = setInterval(()=>{
+						$('#query').hide(3000)
+								   .show(3000)
+					},10000)
+
+					var AnimationSecondQuery = setInterval(()=>{
+						$('#secondquery').hide(3000)
+										 .show(3000)
+										 
+					},2000)
+
+							//liberar o código abaixo ao terminar
+					//alert('touch in the third card')
+
+					$('#thirdquery').click(function(){
+						   $(this).fadeOut('slow')
+								  .show(2000)
+								  .fadeToggle(3000)
+								  .show(5000)
+								  .slideDown(4000)
+								  .show(2000)
+								  .slideUp(4000)
+								  .show(5000)
+					})
+
+
+
+					/** ajax request */
+
+					var url = 'http://192.168.100.5:3000/server'
+
+					fetch(url, { mode: 'no-cors' }).then(res => res.json())
+							  .then(response =>{
+								  response.map(contents =>{
+									console.log('nivel:' + contents.nivel + ',' + 'tecnologia:' + contents.tecnologia)   
+								  })
+							  })
+							  .catch((err)=>{
+								 let main = document.getElementById('main')
+
+								 let message = 'Error:  problem with server request'
+								 let request = document.getElementById('request') 
+								 
+								 request.append(message)
+								
+								 main.append(request)
+								 console.log(err)
+								 })
+		</script>
+    </body>
+</html>
