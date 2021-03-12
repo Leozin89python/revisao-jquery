@@ -1,0 +1,16 @@
+[
+
+    {
+     "nivel":"junior",
+     "tecnologia":"react"
+    },
+    {
+     "nivel":"pleno",
+     "tecnologia":"node"
+     },
+    {
+      "nivel":"sênior",
+     "tecnologia":"java"
+    }
+
+]

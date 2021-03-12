@@ -1,0 +1,119 @@
+html,body{
+    margin: 0;
+    height: 100%;
+}
+header,main,nav,footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+header{
+    grid-area: header;
+    border: solid rgba(0,0,0,0.3) 1px;
+    background: linear-gradient(90deg, darkgreen 15%, green 40%,  red 45%);
+    color: white;
+}
+main{
+    grid-area:main;
+    border: solid rgba(0,0,0,0.3) 1px;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+nav{
+    grid-area:nav;
+    border: solid rgba(0,0,0,0.3) 1px;
+    background: black;
+
+    color: whitesmoke;
+}
+footer{
+    grid-area:footer;
+    border: solid rgba(0,0,0,0.3) 1px;
+
+    background: linear-gradient(90deg, red 45%, darkgreen 15%, green 40%);
+    color: whitesmoke;
+
+    position: relative;
+}
+footer :first-child{
+    position: absolute;
+    bottom: 0;
+    margin-left: 55%;
+}
+body{                                         
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 200px 1fr  200px 100px;
+    grid-template-areas: 
+        'header  header'
+        'nav       main'
+        'nav       main'
+        'nav      footer'
+    ;
+
+    position:relative;
+}
+body strong{
+    text-decoration: overline;
+}
+body span{
+    color: gold;
+}
+body u{
+    color: red;
+    text-shadow: 0px 1px 2px white;
+}
+body ::first-letter{
+    color: gold;
+    text-shadow: rgba(0,0,0,0.4) 0px 1px 2px;
+}
+body nav :first-child{
+    position: absolute;
+    top:200px;
+}
+body main :first-child{
+    position: absolute;
+    top:200px;
+    margin-right: 50%;
+
+    background: rgba(0,0,0,0.05);
+
+    padding: 10px;
+}
+nav h1{
+    margin-bottom: 10px;
+}
+#request{
+    background: darkred;
+    color: white;
+    padding: 10px;
+
+    font-weight: bolder;
+}
+#query,#secondquery,#thirdquery{
+    height: 100px;
+    width: 80%;
+    margin: 3px 0;
+}
+#thirdquery{
+    cursor: pointer;
+}
+@media(max-width:600px){
+    body{                                         
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        grid-template-rows: 200px 1fr  200px 100px;
+        grid-template-areas: 
+            'header  header'
+            'nav       main'
+            'nav       main'
+            'nav      footer'
+        ;
+    
+        position:relative;
+    }
+}
