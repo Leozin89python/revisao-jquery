@@ -2,6 +2,8 @@ let port = 3000
 let express = require('express')
 let app = express()
 
+const cors = require('cors')
+
 let Url = require('./db/db.json')
 
 const { uuid } = require('uuidv4')
@@ -11,8 +13,7 @@ app.use(express.urlencoded({
     extended:true
 }))
 
-
-
+app.use(cors())
 
 let employees = []
 
