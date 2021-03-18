@@ -10,7 +10,7 @@ var AnimationSecondQuery = setInterval(()=>{
 },2000)
 
         //liberar o código abaixo ao terminar
-//alert('touch in the third card')
+alert('touch in the third card')
 
 $('#thirdquery').click(function(){
        $(this).fadeOut('slow')

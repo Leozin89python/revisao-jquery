@@ -4,7 +4,7 @@ let app = express()
 
 let Url = require('./db/db.json')
 
-let uuid = require('uuidv4')
+const { uuid } = require('uuidv4')
 
 app.use(express.json())
 app.use(express.urlencoded({
@@ -24,9 +24,10 @@ app.get('/server',(req, res)=>{
 })
 app.post('/server',(req,res)=>{
     //id = uuid
+    const id = uuid()
 
     let contents = {
-        //id,
+        id,
         nivel:req.body.nivel,
         tecnologia:req.body.tecnologia
     }
@@ -34,7 +35,26 @@ app.post('/server',(req,res)=>{
     employees.push(contents)
     return res.json(contents)
 })
+/**corrigir os erros e fazer o update */
+app.delete('/server/:id',(req,res)=>{
+    const { id } = req.params
 
+    let contents ={
+        id,
+        nivel:req.body.nivel,
+        tecnologia:req.body.tecnologia
+    }
+
+    const mapToFound = employees.findIndex(content => content.id === id)
+    employees[mapToFound] = contents
+
+    const deleteElement = employees.splice(contents, 1)
+
+    return res.json([]).status(201)
+})
 app.listen(port,()=>{
     console.log(`online in port: ${port}`)
 })
+
+//path: http://192.168.1020.5:3000/server
+//path: http://localhost:3000/server
