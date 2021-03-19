@@ -51,11 +51,9 @@ app.delete('/server/:id',(req,res)=>{
 
     const deleteElement = employees.splice(contents, 1)
 
-    return res.json([]).status(201)
+    return res.status(204)
+			  .json([])
 })
 app.listen(port,()=>{
     console.log(`online in port: ${port}`)
 })
-
-//path: http://192.168.1020.5:3000/server
-//path: http://localhost:3000/server

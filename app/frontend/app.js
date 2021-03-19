@@ -1,3 +1,5 @@
+
+
 var animationQuery = setInterval(()=>{
     $('#query').hide(3000)
                .show(3000)
@@ -27,13 +29,16 @@ $('#thirdquery').click(function(){
 
 /** ajax request */
 
+
 var url = 'http://localhost:3000/server'
 
-fetch(url, { mode: 'no-cors' }).then(res => res.json())
+fetch(url, ({mode:"cors"})).then(res => res.json())
           .then(response =>{
-              response.map(contents =>{
+                let data = response.map(contents =>{
                 console.log('nivel:' + contents.nivel + ',' + 'tecnologia:' + contents.tecnologia)   
               })
+			  
+			  document.body.innerHTML = data
           })
           .catch((err)=>{
              let main = document.getElementById('main')
@@ -45,6 +50,6 @@ fetch(url, { mode: 'no-cors' }).then(res => res.json())
             
              main.append(request)
              console.log(err)
-             })
+             })  
 
-
+ 
